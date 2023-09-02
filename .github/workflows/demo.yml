@@ -16,6 +16,8 @@ jobs:
           date
   build-on-windows:
     runs-on: windows-latest
+    if: ${{ success() }}
+    needs: build
     steps:
       - name: run a one-line script
         run: echo hello world
