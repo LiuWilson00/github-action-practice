@@ -3,7 +3,7 @@ name: dev test
 on: [push, workflow_dispatch]
 
 jobs:
-  pytest:
+  devtest:
     runs-on: ubuntu-latest
     steps:
       - name: test pring github context
