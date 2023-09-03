@@ -1,0 +1,10 @@
+name: dev test
+
+on: workflow_dispatch
+
+jobs:
+    pytest:
+      runs-on: ubuntu-latest
+      steps:
+        - name: test pring github context
+          run: echo "${{ github.repositoryUrl}}"
