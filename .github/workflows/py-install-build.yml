@@ -23,3 +23,44 @@ jobs:
         with:
           name: sha256-windows
           path: dist/sha256.exe
+
+  build-on-mac:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: pyinstall sha256
+        run: |
+          pyinstaller sha256/sha256.py -F
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: sha256-mac
+          path: dist/sha256
+  build-on-linux:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: pyinstall sha256
+        run: |
+          pyinstaller sha256/sha256.py -F
+      - name: Upload artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: sha256-linux
+          path: dist/sha256
