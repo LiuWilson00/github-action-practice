@@ -1,0 +1,16 @@
+name: dev test
+
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    types: [opened]
+  workflow_dispatch:
+
+jobs:
+  devtest:
+    runs-on: ubuntu-latest
+    steps:
+      - name: test pring github context
+        run: echo "${{ github.repositoryUrl}}"
