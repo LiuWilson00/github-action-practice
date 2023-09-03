@@ -1,0 +1,20 @@
+name: python insataller sha256
+
+on: workflow_dispatch
+
+jobs:
+  build-on-windows:
+    runs-on: windows-latest
+    steps:
+      - uses: actions/checkout@v3.
+      - name: Install Python
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.9
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements.txt
+      - name: pyinstall sha256
+        run: |
+          pyinstaller sha256/sha256.py -F
